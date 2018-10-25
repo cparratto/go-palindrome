@@ -1,8 +1,7 @@
-
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- saved from url=(0090)file:///var/folders/kz/2mk5f92s213_7qc7gqcctdl40000gn/T/cover361787414/coverage.html#file0 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
 		<style>
 			body {
 				background: black;
@@ -54,7 +53,7 @@
 			<div id="nav">
 				<select id="files">
 				
-				<option value="file0">github.com/mspeer383/go-palindrome/palindrome.go (100.0%)</option>
+				<option value="file0">github.com/cparratto/go-palindrome/palindrome.go (100.0%)</option>
 				
 				</select>
 			</div>
@@ -68,34 +67,33 @@
 		</div>
 		<div id="content">
 		
-		<pre class="file" id="file0" style="display: none">package palindrome
+		<pre class="file" id="file0" style="display: block;">package palindrome
 
 import (
         "strings"
-
-        stringutil "github.com/golang/example/stringutil"
 )
 
 //IsPalindrome returns true if string is
 func IsPalindrome(s string) bool <span class="cov8" title="1">{
-        var reversed string
-        reversed = stringutil.Reverse(s)
-        reversed = stripSpaces(reversed)
-        s = stripSpaces(s)
-        println("s = \t\t", s)
-        println("reverse = \t", reversed)
+        r := []rune(strings.ToLower(strings.Replace(s, " ", "", -1)))
 
-        return s == reversed
-}</span>
+        for i := 0; i &lt; len(r)/2; i++ </span><span class="cov8" title="1">{
+                if !matchesAt(i, r) </span><span class="cov8" title="1">{
+                        return false
+                }</span>
+        }
 
-func stripSpaces(s string) string <span class="cov8" title="1">{
-        s = strings.ToLower(s)
-        return strings.Replace(s, " ", "", -1)
+        <span class="cov8" title="1">return true</span>
+}
+
+func matchesAt(pos int, pal []rune) bool <span class="cov8" title="1">{
+        e := len(pal) - 1 - pos
+        return pal[pos] == pal[e]
 }</span>
 </pre>
 		
 		</div>
-	</body>
+	
 	<script>
 	(function() {
 		var files = document.getElementById('files');
@@ -123,4 +121,5 @@ func stripSpaces(s string) string <span class="cov8" title="1">{
 		}
 	})();
 	</script>
-</html>
+
+</body></html>

@@ -4,8 +4,8 @@ import (
 	"testing"
 )
 
-func TestIsPalindrome(t *testing.T) {
-	palindromeTests := []struct {
+var (
+	palindromeTests = []struct {
 		name      string
 		candidate string
 		valid     bool
@@ -17,10 +17,10 @@ func TestIsPalindrome(t *testing.T) {
 		{candidate: "A Toyotas a Toyota", valid: true},
 		{candidate: "Ah Satan sees Natasha", valid: true},
 		{candidate: "Are we not drawn onward to new era", valid: true},
-		
-
 	}
+)
 
+func TestIsPalindrome(t *testing.T) {
 	for _, pal := range palindromeTests {
 		t.Run(pal.candidate, func(t *testing.T) {
 			got := IsPalindrome(pal.candidate)
@@ -37,5 +37,13 @@ func TestIsPalindrome(t *testing.T) {
 
 	if got != want {
 		t.Errorf("got %v want %v", got, want)
+	}
+}
+
+func BenchmarkIsPalindrome(b *testing.B) {
+	b.ReportAllocs()
+	b.ResetTimer()
+	for _, pal := range palindromeTests {
+		IsPalindrome(pal.candidate)
 	}
 }

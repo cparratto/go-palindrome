@@ -2,23 +2,22 @@ package palindrome
 
 import (
 	"strings"
-
-	stringutil "github.com/golang/example/stringutil"
 )
 
 //IsPalindrome returns true if string is
 func IsPalindrome(s string) bool {
-	var reversed string
-	reversed = stringutil.Reverse(s)
-	reversed = stripSpaces(reversed)
-	s = stripSpaces(s)
-	println("s = \t\t", s)
-	println("reverse = \t", reversed)
+	r := []rune(strings.ToLower(strings.Replace(s, " ", "", -1)))
 
-	return s == reversed
+	for i := 0; i < len(r)/2; i++ {
+		if !matchesAt(i, r) {
+			return false
+		}
+	}
+
+	return true
 }
 
-func stripSpaces(s string) string {
-	s = strings.ToLower(s)
-	return strings.Replace(s, " ", "", -1)
+func matchesAt(pos int, pal []rune) bool {
+	e := len(pal) - 1 - pos
+	return pal[pos] == pal[e]
 }

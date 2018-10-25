@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"github.com/mspeer383/go-palindrome"
+	"github.com/cparratto/go-palindrome"
 )
 
 func main() {

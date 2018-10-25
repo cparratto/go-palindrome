@@ -1,23 +1,36 @@
 package palindrome
 
 import (
-	"strings"
+	"unicode"
 )
 
-//IsPalindrome returns true if string is
+// IsPalindrome returns true if string is
 func IsPalindrome(s string) bool {
-	r := []rune(strings.ToLower(strings.Replace(s, " ", "", -1)))
+	var (
+		runes  = []rune(s)
+		front  = 0
+		back   = len(runes) - 1
+		middle = len(runes) / 2
+	)
 
-	for i := 0; i < len(r)/2; i++ {
-		if !matchesAt(i, r) {
+	for front < middle {
+		if runes[front] == ' ' {
+			front++
+			continue
+		}
+
+		if runes[back] == ' ' {
+			back--
+			continue
+		}
+
+		if unicode.ToLower(runes[front]) != unicode.ToLower(runes[back]) {
 			return false
 		}
+
+		front++
+		back--
 	}
 
 	return true
-}
-
-func matchesAt(pos int, pal []rune) bool {
-	e := len(pal) - 1 - pos
-	return pal[pos] == pal[e]
 }

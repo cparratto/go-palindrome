@@ -7,12 +7,12 @@ import (
 )
 
 func main() {
-	
+
 	candidate := os.Args[1]
 	myp := palindrome.IsPalindrome(candidate)
 
 	if myp {
-		println("Found Palindrome ",candidate)
+		println("Found Palindrome ", candidate)
 	} else {
 		println("Did NOT find Palidrome", candidate)
 	}

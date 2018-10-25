@@ -15,8 +15,8 @@ func TestIsPalindrome(t *testing.T) {
 		{candidate: "notAplanidrome", valid: false},
 		{candidate: "A dog a plan a canal pagoda", valid: true},
 		{candidate: "A Toyotas a Toyota", valid: true},
-		{candidate: "Ah, Satan sees Natasha", valid: true},
-
+		{candidate: "Ah Satan sees Natasha", valid: true},
+		{candidate: "Are we not drawn onward to new era", valid: true},
 		
 
 	}

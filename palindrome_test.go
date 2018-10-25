@@ -14,6 +14,8 @@ func TestIsPalindrome(t *testing.T) {
 		{candidate: "racecar", valid: true},
 		{candidate: "notAplanidrome", valid: false},
 		{candidate: "A dog a plan a canal pagoda", valid: true},
+		{candidate: "A Toyotas a Toyota", valid: true},
+
 	}
 
 	for _, pal := range palindromeTests {
